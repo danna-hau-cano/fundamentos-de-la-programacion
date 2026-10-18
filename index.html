@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorama Sanrio</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <h1>🎀 Memorama Sanrio 🎀</h1>
+    <p>Encuentra las parejas y gana puntos.</p>
+
+    <!-- Nombre y dificultad -->
+    <div id="jugador-panel">
+        <label for="nombre-jugador">Tu nombre:</label>
+
+        <input
+            id="nombre-jugador"
+            type="text"
+            maxlength="25"
+            placeholder="Escribe tu nombre"
+            autocomplete="off"
+        >
+
+        <label for="nivel">Dificultad:</label>
+
+        <select id="nivel">
+            <option value="4">Fácil — 4 parejas</option>
+            <option value="8" selected>Normal — 8 parejas</option>
+        </select>
+
+        <button id="guardar-jugador" type="button">
+            Empezar 🎀
+        </button>
+
+        <p id="jugador-actual">Escribe tu nombre para jugar.</p>
+    </div>
+
+    <!-- Contadores -->
+    <div id="marcador">
+        <p>Puntos: <span id="puntos">0</span></p>
+        <p>Intentos: <span id="intentos">0</span></p>
+        <p>Tiempo: <span id="tiempo">0</span> segundos</p>
+    </div>
+
+    <p>
+        🏆 Mejor tiempo:
+        <span id="record">Sin récord todavía</span>
+    </p>
+
+    <!-- Sonido y pistas -->
+    <button id="sonido" type="button" aria-pressed="true">
+        🔊 Sonido activado
+    </button>
+
+    <button id="pista" type="button">
+        💡 Pistas: 2
+    </button>
+
+    <!-- Tarjetas -->
+    <div id="tablero"></div>
+
+    <button id="reiniciar" type="button">
+        Reiniciar juego
+    </button>
+
+    <button id="ver-tiempos" type="button">
+        Mis tiempos 🏆
+    </button>
+
+    <!-- Ventana de victoria -->
+    <dialog id="victoria">
+        <h2>🎀 ¡Lo lograste! 🎀</h2>
+        <p>Encontraste todas las parejas.</p>
+
+        <p>Puntos: <span id="puntos-finales">0</span></p>
+        <p>Intentos: <span id="intentos-finales">0</span></p>
+        <p>
+            Tiempo:
+            <span id="tiempo-final">0</span> segundos
+        </p>
+
+        <button id="jugar-otra-vez" type="button">
+            Jugar otra vez 💗
+        </button>
+    </dialog>
+
+    <!-- Ventana del historial -->
+    <dialog id="historial">
+        <h2>🏆 Mis tiempos</h2>
+
+        <p id="nombre-historial"></p>
+
+        <p id="historial-vacio">
+            Todavía no tienes partidas guardadas.
+        </p>
+
+        <table id="tabla-tiempos">
+            <thead>
+                <tr>
+                    <th>Partida</th>
+                    <th>Tiempo</th>
+                    <th>Intentos</th>
+                </tr>
+            </thead>
+
+            <tbody id="lista-tiempos"></tbody>
+        </table>
+
+        <p id="mensaje-historial" role="status"></p>
+
+        <button id="borrar-historial" type="button">
+            Borrar mi historial
+        </button>
+
+        <button id="cerrar-historial" type="button">
+            Cerrar
+        </button>
+    </dialog>
+
+    <script src="juego.js"></script>
+</body>
+</html>

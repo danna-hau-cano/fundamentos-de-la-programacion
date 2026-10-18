@@ -1,0 +1,326 @@
+body {
+    background-color: #fff0f5;
+    color: #654568;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 30px 15px;
+}
+
+h1 {
+    color: #a663a8;
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+}
+
+img {
+    border: 5px solid #e6d5f7;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px #ead0df;
+}
+#marcador {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 20px auto;
+}
+
+#marcador p {
+    background-color: #ffffff;
+    border: 2px solid #ead5f5;
+    border-radius: 15px;
+    padding: 12px 18px;
+    margin: 0;
+}
+
+#tablero {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 520px;
+    margin: 25px auto;
+}
+
+#reiniciar {
+    background-color: #f7c6dc;
+    color: #654568;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#reiniciar:hover {
+    background-color: #e6d5f7;
+}
+.tarjeta {
+    background: transparent;
+    border: none;
+    padding: 0;
+    aspect-ratio: 1;
+    perspective: 800px;
+    cursor: pointer;
+}
+
+.tarjeta-interior {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.tarjeta.volteada .tarjeta-interior {
+    transform: rotateY(180deg);
+}
+
+.cara {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    border-radius: 18px;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.reverso {
+    background-color: #e6d5f7;
+    font-size: 36px;
+}
+
+.frente {
+    background-color: #fff;
+    transform: rotateY(180deg);
+}
+
+.frente img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+#victoria {
+    background-color: #fff0f5;
+    color: #654568;
+    border: 4px solid #e6d5f7;
+    border-radius: 25px;
+    padding: 25px;
+    width: 85%;
+    max-width: 360px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow: 0 15px 40px #65456840;
+}
+
+#victoria::backdrop {
+    background-color: #49304d80;
+}
+
+#victoria h2 {
+    color: #a663a8;
+}
+
+#jugar-otra-vez {
+    background-color: #f7c6dc;
+    color: #654568;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#jugar-otra-vez:hover {
+    background-color: #e6d5f7;
+}
+.confeti {
+    position: fixed;
+    top: -20px;
+    width: 10px;
+    height: 16px;
+    border-radius: 3px;
+    pointer-events: none;
+    animation: caer 3s linear forwards;
+}
+
+@keyframes caer {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+#sonido {
+    background-color: #e6d5f7;
+    color: #654568;
+    border: 2px solid white;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#sonido:hover {
+    background-color: #f7c6dc;
+}
+/* Panel del jugador */
+#jugador-panel {
+    max-width: 480px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fffafd;
+    border: 2px solid #ead5f5;
+    border-radius: 22px;
+    box-shadow: 0 5px 15px #ead0df80;
+}
+
+#jugador-panel label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+#nombre-jugador {
+    width: 100%;
+    max-width: 250px;
+    box-sizing: border-box;
+    padding: 12px;
+    margin-bottom: 12px;
+    background-color: white;
+    color: #654568;
+    border: 2px solid #e6d5f7;
+    border-radius: 15px;
+    font: inherit;
+}
+
+#nombre-jugador:focus {
+    outline: 3px solid #f7c6dc;
+    outline-offset: 2px;
+}
+
+#jugador-actual {
+    margin-bottom: 0;
+}
+
+/* Botones del jugador y del historial */
+#guardar-jugador,
+#ver-tiempos,
+#borrar-historial,
+#cerrar-historial {
+    background-color: #f7c6dc;
+    color: #654568;
+    border: 2px solid white;
+    border-radius: 18px;
+    padding: 12px 18px;
+    margin: 5px;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#guardar-jugador:hover,
+#ver-tiempos:hover,
+#borrar-historial:hover,
+#cerrar-historial:hover {
+    background-color: #e6d5f7;
+}
+
+#borrar-historial:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* Ventana de tiempos */
+#historial {
+    width: 90%;
+    max-width: 480px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: 22px;
+    background-color: #fff0f5;
+    color: #654568;
+    border: 4px solid #e6d5f7;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px #65456840;
+}
+
+#historial::backdrop {
+    background-color: #49304d80;
+}
+
+#historial h2 {
+    color: #a663a8;
+}
+
+#tabla-tiempos {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    background-color: #fffafd;
+}
+
+#tabla-tiempos th,
+#tabla-tiempos td {
+    padding: 12px 8px;
+    border-bottom: 2px solid #ead5f5;
+}
+
+#tabla-tiempos th {
+    background-color: #e6d5f7;
+}
+
+#tabla-tiempos tbody tr:nth-child(even) {
+    background-color: #fce4ef;
+}
+#pista {
+    background-color: #fff1b6;
+    color: #654568;
+    border: 2px solid white;
+    border-radius: 18px;
+    padding: 12px 18px;
+    margin: 5px;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#pista:hover:not(:disabled) {
+    background-color: #ffe49a;
+}
+
+#pista:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+#nivel {
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto 15px;
+    padding: 12px;
+    background-color: #f3e8ff;
+    color: #654568;
+    border: 2px solid #e6d5f7;
+    border-radius: 15px;
+    font: inherit;
+    cursor: pointer;
+}
+
+#nivel:focus {
+    outline: 3px solid #f7c6dc;
+    outline-offset: 2px;
+}
