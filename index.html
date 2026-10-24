@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorama Club</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main class="contenedor">
+        <header>
+            <span class="etiqueta">¡APRENDE JUGANDO!</span>
+            <h1>🌈 Memorama</h1>
+            <p>Pequeñas cartas, grandes descubrimientos.</p>
+        </header>
+
+        <section class="configuracion" aria-label="Configurar partida">
+            <div class="opcion">
+                <label for="categoria">📚 Sección</label>
+                <select id="categoria">
+                    <option value="tec">Tecnología</option>
+                    <option value="sistemas">Sistemas operativos</option>
+                    <option value="len">Lenguajes de programación</option>
+                    <option value="dep">Tecnologías DevOps</option>
+                </select>
+            </div>
+
+            <div class="opcion">
+                <label for="nivel">⭐ Nivel</label>
+                <select id="nivel">
+                    <option value="1">Nivel 1</option>
+                    <option value="2">Nivel 2</option>
+                    <option value="3">Nivel 3</option>
+                    <option value="4">Nivel 4</option>
+                </select>
+            </div>
+
+            <div class="opcion">
+                <label for="modo">🎮 Modo de juego</label>
+                <select id="modo">
+                    <option value="solo">Individual</option>
+                    <option value="dos">Dos personas</option>
+                    <option value="computadora">Contra la computadora</option>
+                </select>
+            </div>
+
+            <div class="opcion">
+                <label for="jugador1">😊 Tu nombre</label>
+                <input id="jugador1" maxlength="25"
+                       placeholder="Escribe tu nombre" autocomplete="off">
+            </div>
+
+            <div class="opcion" id="campo-jugador2" hidden>
+                <label for="jugador2">😎 Segunda persona</label>
+                <input id="jugador2" maxlength="25"
+                       placeholder="Nombre del jugador 2" autocomplete="off">
+            </div>
+
+            <button id="iniciar" type="button">¡A jugar! 🚀</button>
+        </section>
+
+        <p id="ayuda-modo" class="instrucciones"></p>
+
+        <section class="informacion" aria-label="Estado de la partida">
+            <p>👆 Movimientos: <strong id="movimientos">0</strong></p>
+            <p>🧩 Parejas: <strong id="parejas">0 / 0</strong></p>
+            <p>⏱️ Tiempo: <strong id="tiempo">00:00</strong></p>
+        </section>
+
+        <p id="turno" class="turno" role="status">
+            ¡Prepara tu primera partida!
+        </p>
+
+        <section id="marcador" class="marcador" hidden>
+            <p id="marcador1"></p>
+            <p id="marcador2"></p>
+        </section>
+
+        <section id="tablero" class="tablero"
+                 aria-label="Cartas del memorama"></section>
+
+        <p id="mensaje" role="status" aria-live="polite"></p>
+
+        <button id="reiniciar" class="secundario" type="button" disabled>
+            Volver a empezar 🔄
+        </button>
+
+        <section class="records" aria-labelledby="titulo-records">
+            <h2 id="titulo-records">🏆 Salón de la fama</h2>
+            <p class="descripcion-records">
+                Mejor partida individual de cada sección y nivel.
+                Gana quien use menos movimientos; en empate, menos tiempo.
+            </p>
+            <div id="lista-records"></div>
+            <p id="aviso-guardado" role="status"></p>
+        </section>
+    </main>
+</body>
+</html>
