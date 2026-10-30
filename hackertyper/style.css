@@ -1,0 +1,261 @@
+:root {
+  --fondo: #000000;
+  --texto: #00ff00;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--fondo);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  color: var(--texto);
+  font: 16px "Courier New", monospace;
+}
+
+#terminal {
+  height: calc(100dvh - 60px);
+  padding: 8px;
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  outline: none;
+  cursor: text;
+}
+
+#codigo {
+  display: inline;
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+  line-height: 1.45;
+}
+
+.cursor {
+  animation: parpadear 1s steps(1) infinite;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px;
+  border-top: 1px solid var(--texto);
+  background: var(--fondo);
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+}
+
+button {
+  padding: 6px;
+  background: transparent;
+  border: none;
+  color: var(--texto);
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--texto);
+  outline-offset: 3px;
+}
+
+footer small {
+  font-size: 10px;
+}
+
+dialog {
+  width: min(640px, 94vw);
+  max-height: 85dvh;
+  padding: 24px;
+  overflow-y: auto;
+  border: 1px solid var(--texto);
+  background: #000;
+  color: var(--texto);
+  font: 15px/1.6 "Courier New", monospace;
+}
+
+dialog::backdrop {
+  background: #000b;
+}
+
+dialog h2 {
+  margin-top: 10px;
+  overflow-wrap: anywhere;
+}
+
+dialog button {
+  margin: 8px 6px 0 0;
+  padding: 8px 12px;
+  border: 1px solid var(--texto);
+}
+
+label {
+  display: block;
+  margin-top: 16px;
+}
+
+input {
+  max-width: 100%;
+  margin: 8px 0;
+  font: inherit;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--texto);
+  background: #080808;
+  color: var(--texto);
+}
+
+input[type="color"] {
+  width: 75px;
+  height: 40px;
+  background: #000;
+  border: 1px solid var(--texto);
+}
+
+input[type="file"] {
+  display: block;
+  width: 100%;
+}
+
+.comandos {
+  display: grid;
+  gap: 5px;
+}
+
+.comandos button {
+  text-align: left;
+}
+
+#efecto {
+  text-align: center;
+}
+
+#perfil {
+  overflow-wrap: anywhere;
+}
+
+#detalles {
+  text-align: left;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: inherit;
+}
+
+progress {
+  width: 100%;
+  height: 18px;
+  accent-color: var(--texto);
+}
+
+.icono {
+  font-size: 65px;
+}
+
+.radar {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 20px auto;
+  overflow: hidden;
+  border: 1px solid var(--texto);
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle,
+    transparent 0 20px,
+    #ffffff30 21px 22px
+  );
+}
+
+.radar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(transparent 65%, var(--texto));
+  opacity: 0.6;
+  animation: girar 2s linear infinite;
+}
+
+.onda {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.onda span {
+  width: 6px;
+  height: 65px;
+  background: var(--texto);
+  animation: pulsar 0.6s infinite alternate;
+}
+
+.onda span:nth-child(2n) {
+  animation-delay: 0.2s;
+}
+
+.onda span:nth-child(3n) {
+  animation-delay: 0.4s;
+}
+
+@keyframes parpadear {
+  50% { opacity: 0; }
+}
+
+@keyframes girar {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulsar {
+  from { transform: scaleY(0.15); }
+  to { transform: scaleY(1); }
+}
+
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  footer small {
+    max-width: 75px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hacker Typer</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <main id="terminal" tabindex="0" aria-label="Terminal de simulación">
+    <pre id="codigo"></pre><span class="cursor">█</span>
+  </main>
+
+  <footer>
+    <nav>
+      <button type="button" id="abrirConfiguracion">Configuración</button>
+      <button type="button" id="abrirAyuda">Ayuda / Comandos</button>
+    </nav>
+    <small>Simulación ficticia</small>
+  </footer>
+
+  <dialog id="configuracion">
+    <h2>Configuración</h2>
+
+    <label for="fondo">Color del fondo</label>
+    <input id="fondo" type="color" value="#000000">
+
+    <label for="texto">Color del código</label>
+    <input id="texto" type="color" value="#00ff00">
+
+    <label for="imagen">Imagen de fondo</label>
+    <input id="imagen" type="file" accept="image/*">
+
+    <button type="button" id="quitarImagen">Quitar imagen</button>
+    <button type="button" data-cerrar>Cerrar</button>
+  </dialog>
+
+  <dialog id="ayuda">
+    <h2>Comandos</h2>
+    <p>Pulsa un botón o usa Alt + Shift + la letra.</p>
+
+    <div class="comandos">
+      <button type="button" data-comando="N">N · Configurar nombre</button>
+      <button type="button" data-comando="A">A · Acceso concedido</button>
+      <button type="button" data-comando="L">L · Ubicación localizada</button>
+      <button type="button" data-comando="M">M · Micrófono ficticio</button>
+      <button type="button" data-comando="D">D · Documentos</button>
+      <button type="button" data-comando="C">C · Conversaciones</button>
+      <button type="button" data-comando="B">B · Cambiar fondo</button>
+      <button type="button" data-comando="R">R · Limpiar terminal</button>
+    </div>
+
+    <p>Alt + Shift + H abre este menú. Esc cierra las ventanas.</p>
+    <button type="button" data-cerrar>Cerrar</button>
+  </dialog>
+
+  <dialog id="nombreDialogo">
+    <form id="nombreFormulario">
+      <h2>Configurar nombre</h2>
+      <label for="nombre">Nombre o alias</label>
+      <input
+        id="nombre"
+        type="text"
+        maxlength="45"
+        autocomplete="off"
+        required
+      >
+      <p>Quedará oculto y se utilizará cuando actives un efecto.</p>
+
+      <button type="submit">Guardar nombre</button>
+      <button type="button" data-cerrar>Cancelar</button>
+    </form>
+  </dialog>
+
+  <dialog id="efecto">
+    <small>SECUENCIA FICTICIA</small>
+    <h2 id="titulo"></h2>
+    <p id="perfil"></p>
+    <div id="animacion" aria-hidden="true"></div>
+    <pre id="detalles"></pre>
+    <progress id="progreso" max="100" value="0"></progress>
+    <p id="estado" role="status"></p>
+    <button type="button" data-cerrar>Cerrar</button>
+  </dialog>
+</body>
+</html>
